@@ -1,0 +1,28 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    padding: 30px;
+    background-color: darkcyan;
+    border-color: black;
+    margin: 10px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.returnToHome {
+    align-items: center;
+}
+
+p {
+    text-align: center;
+    text-size-adjust: 150px;
+}
+
+.sign-in {
+    text-align: center;
+}
