@@ -1,28 +1,152 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --background-clr: bisque;
+  --highlight-clr: rgb(185, 105, 7);
+}
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+  display: grid;
 }
 
-h1 {
-    text-align: center;
-    padding: 30px;
-    background-color: darkcyan;
-    border-color: black;
-    margin: 10px;
+/* ============== banner section */
+
+.banner-section {
+  display: grid;
+  height: 10rem;
 }
 
-h2 {
-    text-align: center;
+.nav-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  /* gap: 2rem; */
+  background-color: bisque;
 }
 
-.returnToHome {
-    align-items: center;
+.app-title {
+  display: grid;
+  justify-content: center;
+  font-size: 40px;
+  font-style: italic;
 }
 
-p {
-    text-align: center;
-    text-size-adjust: 150px;
+.app-presents-title {
+  display: grid;
+  justify-content: center;
+  font-size: 16px;
 }
 
-.sign-in {
-    text-align: center;
+/* ============= hero */
+
+.hero-section {
+  display: grid;
+  height: 30rem;
+  background-color: rgb(255, 250, 229);
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-center {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  gap: 6rem;
+}
+
+.sign-in-container {
+  display: grid;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.sign-in-btn,
+.sign-out-btn {
+  width: 4rem;
+  justify-self: center;
+}
+
+.register-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.staff-stats-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* ================================= sign in page */
+
+.sign-in-hero-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 250px;
+  height: 400px;
+}
+.sign-in-hero-center {
+  display: grid;
+  width: 400px;
+  gap: 50px;
+}
+
+.clock-container{
+  display: grid;
+  height: 80px;
+}
+
+
+
+.sign-in-heading{
+  justify-self: center;
+  color: var(--highlight-clr);
+  font-size: 40px;
+  text-transform: uppercase;
+}
+
+.input-container {
+  display: grid;
+  gap: 15px;
+  justify-items: center;
+}
+
+.input-bar {
+  outline: none;
+  border: 1px solid black;
+  width: 80%;
+  height: 35px;
+  padding: 5px;
+  font-size: 20px;
+}
+
+.submit-btn {
+  width: 20%;
+  height: 30px;
+  border: 1px solid black;
+  outline: none;
+  font-size: 20px;
+}
+
+/* =================== notification */
+
+.notification-container{
+  display: grid;
+}
+
+
+.notification-heading, .notification-message{
+  justify-self: center;
+}
+
+.highlight-name {
+  color: var(--highlight-clr);
 }

@@ -1,63 +1,27 @@
-//#1
-// const teachers = document.querySelector(".login")
+import { teachers } from "./data.js";
 
-// // const specificTeacher = document.getElementById("teachers").teachers;
+let inputElement = document.querySelector(".input-bar");
+const submitBtn = document.querySelector(".submit-btn");
+const notificationElement = document.querySelector(".notification-message");
 
-    
-// if ()) {
-//     "login success"
-// }
-// else {
-// "login fail"
-// }
+function checkForStaff() {
+  let inputValue = inputElement.value;
 
-// getID("Logged IN succesfully");
+  const matchedTeacher = teachers.find(
+    (teacher) => teacher.persalNumber === inputValue
+  );
 
-
-
-
-//#2
-
-
-// const persalID = teachers.find(function (teacher) {
-//   teacher.persalNumber = teacher;
-//   console.log(persalID);
-//   return teacher.persalNumber;
-// });
-
-
-
-//#3
-
-//select element
-// const persalLogin = document.querySelector(".persalLogIn");
-// const logInBtn = document.querySelector(".LogIn-btn");
-
-// logInBtn.addEventListener('click', function(){
-//   persalLogin.find()
-// })
-
-
-//#4
-
-// select element
-
-
-function getdata(){
-const password = document.querySelector(".password");
-const submit = document.querySelector(".submit");
-const status = document.querySelector('.status')
-
-const getPersal = teachers.getItem('persalNumber').value;
-console.log(getPersal);
-
-if(submission.contains(persalNumber.value)){
-  return status.innerHTML = 'successful'
-}
-else{
-  return ('ah shit')
-};
-
+  if (matchedTeacher) {
+    const { firstName, lastName } = matchedTeacher;
+    console.log(firstName, lastName);
+    notificationElement.innerHTML = `Welcome <strong class='highlight-name'>${firstName} ${lastName}</strong>, you're signed in!`;
+    inputElement.value = "";
+  } else if (inputElement.value === "") {
+    notificationElement.textContent = "Please enter a valid persal number";
+  } else {
+    notificationElement.innerHTML =
+      "Staff member not found. Please register <a href='#' alt='register-page'>here</a>.";
+  }
 }
 
-getdata();
+submitBtn.addEventListener("click", checkForStaff);

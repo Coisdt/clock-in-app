@@ -20,25 +20,30 @@
       </nav>
     </section>
     <!-- HERO -->
-    <section class="hero-section">
-      <div class="hero-center">
-        <article class="sign-in-container">
-          <h1>Welcome!</h1>
-          <button class="sign-in-btn"><a href="./signIn.html">Sign In</a></button>
-          <button class="sign-out-btn">
-            <a href="./signOut.html">Sign Out</a>
-          </button>
+    <section class="sign-in-hero-section">
+      <div class="clock-center">
+        <article class="clock-container">
+          <h1 class="clock-heading">Current time:</h1>
+          <p class="clock">07:55:01</p>
         </article>
-
-        <article class="register-container">
-          <h3 class="register-heading">Not on the staff list yet?</h3>
-          <a href="#">Click here to add yourself.</a>
-        </article>
-
-        <article class="staff-stats-container">
-          <h3 class="staff-stats-title">See staff absentee statistics:</h3>
-          <a href="#"> Click here</a>
-        </article>
+      </div>
+      <div class="sign-in-hero-center">
+        <h1 class="sign-in-heading">Sign in</h1>
+        <div class="input-container">
+          <input
+            type="text"
+            class="input-bar"
+            placeholder="Enter you persal number..."
+          />
+          <div class="number-pad-container">
+            <article class="number-pad">1 2 3 4 5 6 7 8 9</article>
+          </div>
+          <button class="submit-btn">Submit</button>
+        </div>
+        <div class="notification-container">
+          <h3 class="notification-heading">Status:</h3>
+          <p class="notification-message"></p>
+        </div>
       </div>
     </section>
   </body>
