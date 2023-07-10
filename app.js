@@ -3,7 +3,7 @@ let inputElement = document.querySelector(".input-bar");
 const submitBtn = document.querySelector(".submit-btn");
 const notificationElement = document.querySelector(".notification-message");
 
-// ============================================== 
+// ==============================================
 
 // CLOCK IN - NUMBER PAD SETUP
 
@@ -21,13 +21,7 @@ numbers.forEach((number) => {
   });
 });
 
-// remove numbers
-// submitBtn.addEventListener("click", () => {
-//   persalNumber.length = 0;
-//   inputElement.value = "";
-// });
-
-// ============================================== 
+// ==============================================
 
 // CLOCK IN - CLOCK TIMER SETUP
 
@@ -67,7 +61,7 @@ setInterval(() => {
   clockTime();
 }, 1000);
 
-// ============================================== 
+// ==============================================
 
 // CLOCK IN - SUBMITION OF PERSAL NUMBER
 
@@ -75,6 +69,7 @@ setInterval(() => {
 
 function checkForStaff() {
   let inputValue = inputElement.value;
+  const timeStamp = document.querySelector(".notification-message-time");
 
   const matchedTeacher = teachers.find(
     (teacher) => teacher.persalNumber === inputValue
@@ -86,17 +81,25 @@ function checkForStaff() {
     notificationElement.innerHTML = `Welcome <strong class='highlight-name'>${firstName} ${lastName}</strong>, you've signed in`;
 
     // stamp time when login occured
-    const timeStamp = document.querySelector(".notification-message-time");
     timeStamp.textContent = `at ${clockTime()}.`;
+    // remove numbers after clock in
     inputElement.value = "";
+    persalNumber.length = 0;
   } else if (inputElement.value === "") {
     notificationElement.textContent = "Please enter a valid persal number";
+    // remove numbers after clock in
+    timeStamp.textContent = "";
     inputElement.value = "";
+    persalNumber.length = 0;
     console.log("empty input");
   } else {
     notificationElement.innerHTML =
-      "Staff member not found. Please register <a href='#' alt='register-page'>here</a>.";
+    "Staff member not found. Please register <a href='#' alt='register-page'>here</a>.";
+    // remove numbers after clock in
+    timeStamp.textContent = "";
     inputElement.value = "";
+    persalNumber.length = 0;
+    
     console.log("wrong persal");
   }
 }
