@@ -98,11 +98,38 @@ body {
 
 /* =============================================== CLOCK IN SECTION*/
 
+.home-section{
+  display: none;
+  height: 700px;
+  background-color: rgb(255, 250, 229);
+  justify-content: center;
+  align-items: center;
+}
+
+
+.home-title{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+/* =============================================== CLOCK IN SECTION*/
+
+.section-2 {
+  display: none;
+}
+
+.show-section{
+  display: grid;
+}
+
 .clock-in-section {
   display: grid;
   /* height: calc(100vh - 50px - 100px); */
-  height: 750px;
-  grid-template-rows: 1fr 7fr;
+  height: 700px;
+  grid-template-rows: 3fr 7fr;
   background-color: rgb(255, 250, 229);
   justify-content: center;
   align-items: center;

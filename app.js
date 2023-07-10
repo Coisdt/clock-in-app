@@ -6,6 +6,29 @@ const notificationElement = document.querySelector(".notification-message");
 
 // ==============================================
 
+// TAB SWITCH
+
+// ==============================================
+
+const homeTab = document.getElementById("tab-1");
+const clockInTab = document.getElementById("tab-2");
+const homeSection = document.querySelector(".section-1");
+const clockInSection = document.querySelector(".section-2");
+
+clockInTab.addEventListener("click", () => {
+  console.log(clockInTab);
+  clockInSection.classList.add("show-section");
+  homeSection.classList.remove("show-section");
+});
+
+homeTab.addEventListener("click", () => {
+  console.log(clockInTab);
+  homeSection.classList.add("show-section");
+  clockInSection.classList.remove("show-section");
+});
+
+// ==============================================
+
 // CLOCK IN - NUMBER PAD SETUP
 
 // ==============================================
