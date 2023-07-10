@@ -10,7 +10,7 @@ const notificationElement = document.querySelector(".notification-message");
 // ==============================================
 
 const numbers = document.querySelectorAll(".number");
-const persalNumber = [];
+let persalNumber = [];
 
 // add number
 numbers.forEach((number) => {
@@ -18,7 +18,19 @@ numbers.forEach((number) => {
     persalNumber.push(number.textContent);
     let stringedPersalNumber = persalNumber.join("");
     inputElement.value = stringedPersalNumber;
+
+    console.log(stringedPersalNumber);
+    // console.log(persalNumber);
   });
+});
+// backspace number
+const backspaceBtn = document.querySelector(".backspace-btn");
+backspaceBtn.addEventListener("click", () => {
+  if (persalNumber.length > 0) {
+    persalNumber.splice(-1, 1);
+  }
+  let stringedPersalNumber = persalNumber.join("");
+  inputElement.value = stringedPersalNumber;
 });
 
 // ==============================================
@@ -94,14 +106,24 @@ function checkForStaff() {
     console.log("empty input");
   } else {
     notificationElement.innerHTML =
-    "Staff member not found. Please register <a href='#' alt='register-page'>here</a>.";
+      "Staff member not found. Please register <a href='#' alt='register-page'>here</a>.";
     // remove numbers after clock in
     timeStamp.textContent = "";
     inputElement.value = "";
     persalNumber.length = 0;
-    
+
     console.log("wrong persal");
   }
 }
 
 submitBtn.addEventListener("click", checkForStaff);
+
+
+// enter submits persal
+window.addEventListener("keydown", (e) => {
+  const key = e.key;
+  if (key === "Enter") {
+    console.log("enter works");
+    checkForStaff()
+  }
+});
