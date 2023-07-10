@@ -1,4 +1,5 @@
 import { teachers } from "./data.js";
+import { months } from "./data.js";
 let inputElement = document.querySelector(".input-bar");
 const submitBtn = document.querySelector(".submit-btn");
 const notificationElement = document.querySelector(".notification-message");
@@ -18,19 +19,23 @@ numbers.forEach((number) => {
     persalNumber.push(number.textContent);
     let stringedPersalNumber = persalNumber.join("");
     inputElement.value = stringedPersalNumber;
-
-    console.log(stringedPersalNumber);
-    // console.log(persalNumber);
   });
 });
 // backspace number
-const backspaceBtn = document.querySelector(".backspace-btn");
+const backspaceBtn = document.getElementById("backspace-btn");
 backspaceBtn.addEventListener("click", () => {
   if (persalNumber.length > 0) {
-    persalNumber.splice(-1, 1);
+    persalNumber.pop();
   }
   let stringedPersalNumber = persalNumber.join("");
   inputElement.value = stringedPersalNumber;
+});
+
+// clear number
+const clearBtn = document.getElementById("clear-btn");
+clearBtn.addEventListener("click", () => {
+  inputElement.value = "";
+  persalNumber.length = 0;
 });
 
 // ==============================================
@@ -75,6 +80,24 @@ setInterval(() => {
 
 // ==============================================
 
+// CLOCK IN - DATE SETUP
+
+// ==============================================
+
+const newDate = new Date();
+
+let day = newDate.getDate();
+let month = newDate.getMonth();
+let year = newDate.getFullYear();
+
+const currentMonth = months[month];
+
+const currentDate = document.querySelector(".date");
+
+currentDate.textContent = `${day} ${currentMonth} ${year}`;
+
+// ==============================================
+
 // CLOCK IN - SUBMITION OF PERSAL NUMBER
 
 // ==============================================
@@ -94,6 +117,7 @@ function checkForStaff() {
 
     // stamp time when login occured
     timeStamp.textContent = `at ${clockTime()}.`;
+
     // remove numbers after clock in
     inputElement.value = "";
     persalNumber.length = 0;
@@ -118,12 +142,11 @@ function checkForStaff() {
 
 submitBtn.addEventListener("click", checkForStaff);
 
-
 // enter submits persal
 window.addEventListener("keydown", (e) => {
   const key = e.key;
   if (key === "Enter") {
     console.log("enter works");
-    checkForStaff()
+    checkForStaff();
   }
 });

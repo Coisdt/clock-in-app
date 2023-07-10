@@ -53,54 +53,59 @@
     </nav>
 
     <!-- CLOCK IN -->
-    <section aria-labelledby="tab-2" class="clock-in-section">
-      <h1 class="clock-in-heading">Clock in</h1>
-      <!-- time -->
-      <div class="clock-in-center">
-        <div class="time-center">
-          <article class="time-container">
-            <h1 class="time-heading">Current time:</h1>
-            <p class="time"> - -:- - :- - </p>
-          </article>
-        </div>
-        <!-- identification -->
-        <div class="identification-center">
-          <div class="input-container">
-            <input
-            type="text"
-            class="input-bar"
-            placeholder="Enter your persal number..."
-            />
-            <div class="notification-container">
-              <h3 class="notification-heading">Status:</h3>
-              <p class="notification-message"></p>
-              <p class="notification-message-time"></p>
+    <section aria-labelledby="tab-2">
+      <div class="clock-in-section">
+        <h1 class="clock-in-heading">Clock in</h1>
+        <!-- time -->
+        <div class="clock-in-center">
+          <div class="time-center">
+            <article class="time-container">
+              <h1 class="time-heading">Current time:</h1>
+              <p class="time">- -:- - :- -</p>
+              <p class="date">- -/- - /- -</p>
+            </article>
+          </div>
+          <!-- identification -->
+          <div class="identification-center">
+            <div class="input-container">
+              <input
+                type="text"
+                class="input-bar"
+                placeholder="Enter your persal number..."
+              />
+              <div class="notification-container">
+                <h3 class="notification-heading">Status:</h3>
+                <p class="notification-message"></p>
+                <p class="notification-message-time"></p>
+              </div>
+              <div class="number-pad-container">
+                <article class="number-pad">
+                  <ul class="number-pad-numbers">
+                    <i class="number">1</i>
+                    <i class="number">2</i>
+                    <i class="number">3</i>
+                  </ul>
+                  <ul class="number-pad-numbers">
+                    <i class="number">4</i>
+                    <i class="number">5</i>
+                    <i class="number">6</i>
+                  </ul>
+                  <ul class="number-pad-numbers">
+                    <i class="number">7</i>
+                    <i class="number">8</i>
+                    <i class="number">9</i>
+                  </ul>
+                  <ul class="number-pad-numbers">
+                    <li id="backspace-btn">
+                      <i class="fa-solid fa-delete-left"></i>
+                    </li>
+                    <i class="number">0</i>
+                    <i id="clear-btn">CE</i>
+                  </ul>
+                </article>
+              </div>
+              <button class="submit-btn">Submit</button>
             </div>
-            <div class="number-pad-container">
-              <article class="number-pad">
-                <ul class="number-pad-numbers">
-                  <i class="number">1</i>
-                  <i class="number">2</i>
-                  <i class="number">3</i>
-                </ul>
-                <ul class="number-pad-numbers">
-                  <i class="number">4</i>
-                  <i class="number">5</i>
-                  <i class="number">6</i>
-                </ul>
-                <ul class="number-pad-numbers">
-                  <i class="number">7</i>
-                  <i class="number">8</i>
-                  <i class="number">9</i>
-                </ul>
-                <ul class="number-pad-numbers">
-                  <i class="number"><i class="backspace-btn fa-solid fa-delete-left"></i></i>
-                  <i class="number">0</i>
-                  <i class="number"></i>
-                </ul>
-              </article>
-            </div>
-            <button class="submit-btn">Submit</button>
           </div>
         </div>
       </div>
