@@ -6,29 +6,43 @@ const notificationElement = document.querySelector(".notification-message");
 
 // ==============================================
 
-// TAB SWITCH
+// TAB SWITCH/ SHOW CONTENT
 
 // ==============================================
-// const homeTab = document.getElementById("tab-1");
-// const clockInTab = document.getElementById("tab-2");
-// const homeSection = document.querySelector(".section-1");
-// const clockInSection = document.querySelector(".section-2");
+
 const tabLinks = document.querySelectorAll(".nav-link");
-const sections = document.querySelectorAll(".section");
+const tabContainer = document.querySelector(".tab-container");
+const allSections = document.querySelector(".all-sections");
+const sections = allSections.querySelectorAll(".section");
+
+// === show/hide css 
 
 tabLinks.forEach((tab) => {
   tab.addEventListener("click", () => {
     tabLinks.forEach((otherTab) => {
       if (tab === otherTab) {
         tab.classList.add("active");
-        // homeTab.classList.add("show-section");
-        const getID = tab.getAttribute('id')
-        console.log(getID);
       } else {
         otherTab.classList.remove("active");
       }
     });
   });
+});
+
+// ==== show/hide content
+
+tabContainer.addEventListener("click", (e) => {
+  const clickedTab = e.target.closest("a");
+  if (!clickedTab) return;
+  e.preventDefault();
+
+  const activeTab = clickedTab.getAttribute("href").slice(1);
+  const activeSection = document.getElementById(activeTab);
+
+  sections.forEach((section) => {
+    section.setAttribute("hidden", true);
+  });
+  activeSection.removeAttribute("hidden");
 });
 
 // ==============================================
@@ -40,7 +54,7 @@ tabLinks.forEach((tab) => {
 const numbers = document.querySelectorAll(".number");
 let persalNumber = [];
 
-// add number
+// == add number
 numbers.forEach((number) => {
   number.addEventListener("click", () => {
     persalNumber.push(number.textContent);
@@ -48,7 +62,7 @@ numbers.forEach((number) => {
     inputElement.value = stringedPersalNumber;
   });
 });
-// backspace number
+// == backspace number
 const backspaceBtn = document.getElementById("backspace-btn");
 backspaceBtn.addEventListener("click", () => {
   if (persalNumber.length > 0) {
@@ -58,7 +72,7 @@ backspaceBtn.addEventListener("click", () => {
   inputElement.value = stringedPersalNumber;
 });
 
-// clear number
+// == clear number
 const clearBtn = document.getElementById("clear-btn");
 clearBtn.addEventListener("click", () => {
   inputElement.value = "";
@@ -73,7 +87,7 @@ clearBtn.addEventListener("click", () => {
 
 const clockTimeElement = document.querySelector(".time");
 
-// add time
+// == add time
 function clockTime() {
   const date = new Date();
   const day = date.getDate().toString();
@@ -81,7 +95,8 @@ function clockTime() {
   let seconds = date.getSeconds().toString();
   let minutes = date.getMinutes().toString();
   let hours = date.getHours().toString();
-  // add 0 before time when only 1 placevalue
+
+  // == add 0 before time when only 1 placevalue
   if (hours.length === 1) {
     hours = 0 + hours;
   }
@@ -100,7 +115,7 @@ function clockTime() {
   return currentTime;
 }
 
-// update
+// == update running clock
 setInterval(() => {
   clockTime();
 }, 1000);

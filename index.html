@@ -28,97 +28,102 @@
     </section>
 
     <!-- NAVIGATION -->
+    <div class="tab-container">
+      <nav class="navigation-center">
+        <div class="navbar">
+          <ul class="nav-links-container">
+            <li class="nav-link-list-item">
+              <a href="#tab-1" class="nav-link">
+                <i class="fa-solid fa-house"></i>Home</a
+              >
+            </li>
+            <li>
+              <a href="#tab-2" class="nav-link"
+                ><i class="fa-solid fa-clock"></i>Clock in</a
+              >
+            </li>
+            <li>
+              <a href="#tab-3" class="nav-link"
+                ><i class="fa-solid fa-clipboard"></i>Statistics</a
+              >
+            </li>
+            <li>
+              <a href="#tab-4" class="nav-link"
+                ><i class="fa-solid fa-user"></i>Staff list</a
+              >
+            </li>
+          </ul>
+        </div>
+      </nav>
 
-    <nav class="navigation-center">
-      <div class="navbar">
-        <ul class="nav-links-container">
-          <li class="nav-link-list-item">
-            <a id="tab-1" href="#" class="nav-link">
-              <i class="fa-solid fa-house"></i>Home</a
-            >
-          </li>
-          <li>
-            <a id="tab-2" href="#" class="nav-link"><i class="fa-solid fa-clock"></i>Clock in</a>
-          </li>
-          <li>
-            <a id="tab-3" href="#" class="nav-link"
-              ><i class="fa-solid fa-clipboard"></i>Statistics</a
-            >
-          </li>
-          <li>
-            <a id="tab-4" href="#" class="nav-link"
-              ><i class="fa-solid fa-user"></i>Staff list</a
-            >
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <!-- HOME SECTION -->
-
-    <section class="home-section section show-section">
-      <div class="home-center">
-        <h1 class="home-title">This is the home section</h1>
-      </div>
-    </section>
-
-    <!-- CLOCK IN -->
-    <section aria-labelledby="tab-2" class="section">
-      <div class="clock-in-section">
-        <h1 class="clock-in-heading">Clock in</h1>
-        <!-- time -->
-        <div class="clock-in-center">
-          <div class="time-center">
-            <article class="time-container">
-              <h1 class="time-heading">Current time:</h1>
-              <p class="time">- -:- - :- -</p>
-              <p class="date">- -/- - /- -</p>
-            </article>
+      <!-- HOME SECTION -->
+      <div class="all-sections">
+        <div id="tab-1" class="section">
+          <div class="home-center">
+            <h1 class="home-title">This is the home section</h1>
           </div>
-          <!-- identification -->
-          <div class="identification-center">
-            <div class="input-container">
-              <input
-                type="text"
-                class="input-bar"
-                placeholder="Enter your persal number..."
-              />
-              <div class="notification-container">
-                <h3 class="notification-heading">Status:</h3>
-                <p class="notification-message"></p>
-                <p class="notification-message-time"></p>
-              </div>
-              <div class="number-pad-container">
-                <article class="number-pad">
-                  <ul class="number-pad-numbers">
-                    <i class="number">1</i>
-                    <i class="number">2</i>
-                    <i class="number">3</i>
-                  </ul>
-                  <ul class="number-pad-numbers">
-                    <i class="number">4</i>
-                    <i class="number">5</i>
-                    <i class="number">6</i>
-                  </ul>
-                  <ul class="number-pad-numbers">
-                    <i class="number">7</i>
-                    <i class="number">8</i>
-                    <i class="number">9</i>
-                  </ul>
-                  <ul class="number-pad-numbers">
-                    <li id="backspace-btn">
-                      <i class="fa-solid fa-delete-left"></i>
-                    </li>
-                    <i class="number">0</i>
-                    <i id="clear-btn">CE</i>
-                  </ul>
+        </div>
+
+        <!-- CLOCK IN -->
+        <div id="tab-2" class="section">
+          <div class="clock-in-section">
+            <h1 class="clock-in-heading">Clock in</h1>
+            <!-- time -->
+            <div class="clock-in-center">
+              <div class="time-center">
+                <article class="time-container">
+                  <h1 class="time-heading">Current time:</h1>
+                  <p class="time">- -:- - :- -</p>
+                  <p class="date">- -/- - /- -</p>
                 </article>
               </div>
-              <button class="submit-btn">Submit</button>
+              <!-- identification -->
+              <div class="identification-center">
+                <div class="input-container">
+                  <input
+                    type="text"
+                    class="input-bar"
+                    placeholder="Enter your persal number..."
+                  />
+                  <div class="notification-container">
+                    <h3 class="notification-heading">Status:</h3>
+                    <p class="notification-message"></p>
+                    <p class="notification-message-time"></p>
+                  </div>
+                  <div class="number-pad-container">
+                    <article class="number-pad">
+                      <ul class="number-pad-numbers">
+                        <i class="number">1</i>
+                        <i class="number">2</i>
+                        <i class="number">3</i>
+                      </ul>
+                      <ul class="number-pad-numbers">
+                        <i class="number">4</i>
+                        <i class="number">5</i>
+                        <i class="number">6</i>
+                      </ul>
+                      <ul class="number-pad-numbers">
+                        <i class="number">7</i>
+                        <i class="number">8</i>
+                        <i class="number">9</i>
+                      </ul>
+                      <ul class="number-pad-numbers">
+                        <li id="backspace-btn">
+                          <i class="fa-solid fa-delete-left"></i>
+                        </li>
+                        <i class="number">0</i>
+                        <i id="clear-btn">CE</i>
+                      </ul>
+                    </article>
+                  </div>
+                  <button class="submit-btn">Submit</button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
     <!-- register (home tab)-->
     <!-- <article class="register-container">

@@ -90,14 +90,19 @@ body {
   color: white;
 }
 
+/* =============================================== ALL SECTIONS */
+
+
+
 /* =============================================== CLOCK IN SECTION*/
 
-.home-section {
-  display: none;
+.home-center {
+  display: grid;
   height: 700px;
   background-color: rgb(255, 250, 229);
   justify-content: center;
   align-items: center;
+  border-bottom: 2px solid black;
 }
 
 .home-title {
@@ -108,23 +113,17 @@ body {
 
 /* =============================================== CLOCK IN SECTION*/
 
-.section-2 {
-  display: none;
-}
 
-.show-section {
-  display: grid;
-}
 
 .clock-in-section {
   display: grid;
-  /* height: calc(100vh - 50px - 100px); */
   height: 700px;
   grid-template-rows: 3fr 7fr;
   background-color: rgb(255, 250, 229);
   justify-content: center;
   align-items: center;
   width: 100vw;
+  border-bottom: 2px solid black;
 }
 
 .clock-in-center {
