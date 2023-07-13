@@ -9,22 +9,26 @@ const notificationElement = document.querySelector(".notification-message");
 // TAB SWITCH
 
 // ==============================================
+// const homeTab = document.getElementById("tab-1");
+// const clockInTab = document.getElementById("tab-2");
+// const homeSection = document.querySelector(".section-1");
+// const clockInSection = document.querySelector(".section-2");
+const tabLinks = document.querySelectorAll(".nav-link");
+const sections = document.querySelectorAll(".section");
 
-const homeTab = document.getElementById("tab-1");
-const clockInTab = document.getElementById("tab-2");
-const homeSection = document.querySelector(".section-1");
-const clockInSection = document.querySelector(".section-2");
-
-clockInTab.addEventListener("click", () => {
-  console.log(clockInTab);
-  clockInSection.classList.add("show-section");
-  homeSection.classList.remove("show-section");
-});
-
-homeTab.addEventListener("click", () => {
-  console.log(clockInTab);
-  homeSection.classList.add("show-section");
-  clockInSection.classList.remove("show-section");
+tabLinks.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    tabLinks.forEach((otherTab) => {
+      if (tab === otherTab) {
+        tab.classList.add("active");
+        // homeTab.classList.add("show-section");
+        const getID = tab.getAttribute('id')
+        console.log(getID);
+      } else {
+        otherTab.classList.remove("active");
+      }
+    });
+  });
 });
 
 // ==============================================

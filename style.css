@@ -58,19 +58,17 @@ body {
   height: 50px;
 }
 
-.nav-links {
+.nav-links-container {
   display: grid;
   list-style: none;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-.nav-links li {
+.nav-link-list-item {
   display: grid;
-  width: 100%;
-  height: 100%;
 }
 
-.nav-links a {
+.nav-link {
   display: flex;
   gap: 5px;
   text-decoration: none;
@@ -82,23 +80,19 @@ body {
   border-right: 0.2px solid rgba(128, 128, 128, 0.4);
 }
 
-.nav-links li a:hover {
-  background-color: var(--highlight-clr);
-  color: white;
-}
-.nav-links li a:focus {
+.nav-link:hover {
   background-color: var(--highlight-clr);
   color: white;
 }
 
 .active {
-  color: white;
   background-color: var(--highlight-clr);
+  color: white;
 }
 
 /* =============================================== CLOCK IN SECTION*/
 
-.home-section{
+.home-section {
   display: none;
   height: 700px;
   background-color: rgb(255, 250, 229);
@@ -106,14 +100,11 @@ body {
   align-items: center;
 }
 
-
-.home-title{
+.home-title {
   display: grid;
   justify-content: center;
   align-items: center;
 }
-
-
 
 /* =============================================== CLOCK IN SECTION*/
 
@@ -121,7 +112,7 @@ body {
   display: none;
 }
 
-.show-section{
+.show-section {
   display: grid;
 }
 
