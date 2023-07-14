@@ -6,17 +6,19 @@ const notificationElement = document.querySelector(".notification-message");
 
 // ==============================================
 
-// TAB SWITCH/ SHOW CONTENT
+// TAB SWITCH
 
 // ==============================================
-
+// const homeTab = document.getElementById("tab-1");
+// const clockInTab = document.getElementById("tab-2");
+// const homeSection = document.querySelector(".section-1");
+// const clockInSection = document.querySelector(".section-2");
 const tabLinks = document.querySelectorAll(".nav-link");
 const tabContainer = document.querySelector(".tab-container");
 const allSections = document.querySelector(".all-sections");
 const sections = allSections.querySelectorAll(".section");
 
-// === show/hide css 
-
+// == show/ hide css
 tabLinks.forEach((tab) => {
   tab.addEventListener("click", () => {
     tabLinks.forEach((otherTab) => {
@@ -29,8 +31,7 @@ tabLinks.forEach((tab) => {
   });
 });
 
-// ==== show/hide content
-
+// === show/hide content
 tabContainer.addEventListener("click", (e) => {
   const clickedTab = e.target.closest("a");
   if (!clickedTab) return;
@@ -42,19 +43,19 @@ tabContainer.addEventListener("click", (e) => {
   sections.forEach((section) => {
     section.setAttribute("hidden", true);
   });
-  activeSection.removeAttribute("hidden");
+  activeSection.removeAttribute("hidden", false);
 });
 
 // ==============================================
 
-// CLOCK IN - NUMBER PAD SETUP
+// CLOCK IN SECTION - NUMBER PAD SETUP
 
 // ==============================================
 
 const numbers = document.querySelectorAll(".number");
 let persalNumber = [];
 
-// == add number
+// add number
 numbers.forEach((number) => {
   number.addEventListener("click", () => {
     persalNumber.push(number.textContent);
@@ -62,7 +63,7 @@ numbers.forEach((number) => {
     inputElement.value = stringedPersalNumber;
   });
 });
-// == backspace number
+// backspace number
 const backspaceBtn = document.getElementById("backspace-btn");
 backspaceBtn.addEventListener("click", () => {
   if (persalNumber.length > 0) {
@@ -72,7 +73,7 @@ backspaceBtn.addEventListener("click", () => {
   inputElement.value = stringedPersalNumber;
 });
 
-// == clear number
+// clear number
 const clearBtn = document.getElementById("clear-btn");
 clearBtn.addEventListener("click", () => {
   inputElement.value = "";
@@ -81,13 +82,13 @@ clearBtn.addEventListener("click", () => {
 
 // ==============================================
 
-// CLOCK IN - CLOCK TIMER SETUP
+// CLOCK IN SECTION - CLOCK TIMER SETUP
 
 // ==============================================
 
 const clockTimeElement = document.querySelector(".time");
 
-// == add time
+// add time
 function clockTime() {
   const date = new Date();
   const day = date.getDate().toString();
@@ -95,8 +96,7 @@ function clockTime() {
   let seconds = date.getSeconds().toString();
   let minutes = date.getMinutes().toString();
   let hours = date.getHours().toString();
-
-  // == add 0 before time when only 1 placevalue
+  // add 0 before time when only 1 placevalue
   if (hours.length === 1) {
     hours = 0 + hours;
   }
@@ -115,14 +115,14 @@ function clockTime() {
   return currentTime;
 }
 
-// == update running clock
+// update
 setInterval(() => {
   clockTime();
 }, 1000);
 
 // ==============================================
 
-// CLOCK IN - DATE SETUP
+// CLOCK IN SECTION - DATE SETUP
 
 // ==============================================
 
@@ -140,9 +140,12 @@ currentDate.textContent = `${day} ${currentMonth} ${year}`;
 
 // ==============================================
 
-// CLOCK IN - SUBMITION OF PERSAL NUMBER
+// CLOCK IN SECTION - SUBMITION OF PERSAL NUMBER
 
 // ==============================================
+// const staffListCenter = document.querySelector(".staff-list-center");
+const staffCardList = document.querySelector(".staff-member-card-list");
+let loggedInStaff = [];
 
 function checkForStaff() {
   let inputValue = inputElement.value;
@@ -153,18 +156,32 @@ function checkForStaff() {
   );
   // match persal nr to teacher data
   if (matchedTeacher) {
-    const { firstName, lastName } = matchedTeacher;
-    console.log(firstName, lastName);
-    notificationElement.innerHTML = `Welcome <strong class='highlight-name'>${firstName} ${lastName}</strong>, you've signed in`;
+    const { firstName, lastName, registerClassNumber } = matchedTeacher;
+    notificationElement.innerHTML = `Welcome <strong class='highlight-name'>${firstName} ${lastName}</strong>, you've signed in at ${clockTime()}.`;
 
-    // stamp time when login occured
-    timeStamp.textContent = `at ${clockTime()}.`;
+    // only allow login once
+    console.log(loggedInStaff);
+    if(loggedInStaff.includes(matchedTeacher) === true){
+      console.log('staff member already logged in');
+      loggedInStaff.push(matchedTeacher);
+    }
+
+    // // add to clock out section to logout
+    const staffCard = document.createElement("article");
+    staffCard.setAttribute("class", "staff-member-card");
+    staffCard.innerHTML = `
+    <div class="staff-member-status"></div>
+    <div class="staff-member-name">${firstName} ${lastName}</div>
+    <div class="staff-member-class">${registerClassNumber}</div>
+    <div class="time-stamp-clock-in">${clockTime()}</div>`;
+    staffCardList.appendChild(staffCard);
 
     // remove numbers after clock in
     inputElement.value = "";
     persalNumber.length = 0;
   } else if (inputElement.value === "") {
     notificationElement.textContent = "Please enter a valid persal number";
+
     // remove numbers after clock in
     timeStamp.textContent = "";
     inputElement.value = "";
@@ -173,6 +190,7 @@ function checkForStaff() {
   } else {
     notificationElement.innerHTML =
       "Staff member not found. Please register <a href='#' alt='register-page'>here</a>.";
+
     // remove numbers after clock in
     timeStamp.textContent = "";
     inputElement.value = "";
@@ -188,7 +206,30 @@ submitBtn.addEventListener("click", checkForStaff);
 window.addEventListener("keydown", (e) => {
   const key = e.key;
   if (key === "Enter") {
-    console.log("enter works");
+    // console.log("enter works");
     checkForStaff();
   }
 });
+
+// ==============================================
+
+// STAFF LIST SECTION
+
+// ==============================================
+
+//  ===== display staff list
+// function displayTeachers() {
+// teachers.forEach((teacher) => {
+//   const { firstName, lastName, email, registerClassNumber, dateOfBirth } =
+//     teacher;
+//   const staffCard = document.createElement("article");
+//   staffCard.setAttribute("class", "staff-member-card");
+//   staffCard.innerHTML = `<div class="staff-member-class">${registerClassNumber}</div>
+//   <div class="staff-member-name">${teacher.firstName} ${lastName}</div>
+//   <div class="staff-member-birth">${dateOfBirth}</div>
+//   <div class="staff-member-email">${email}</div>`;
+//   staffListCenter.appendChild(staffCard);
+// });
+// }
+
+// displayTeachers(teachers);

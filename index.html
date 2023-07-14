@@ -33,7 +33,7 @@
         <div class="navbar">
           <ul class="nav-links-container">
             <li class="nav-link-list-item">
-              <a href="#tab-1" class="nav-link">
+              <a href="#tab-1" class="nav-link active">
                 <i class="fa-solid fa-house"></i>Home</a
               >
             </li>
@@ -44,28 +44,28 @@
             </li>
             <li>
               <a href="#tab-3" class="nav-link"
-                ><i class="fa-solid fa-clipboard"></i>Statistics</a
+                ><i class="fa-solid fa-user"></i>Clock out</a
               >
             </li>
             <li>
               <a href="#tab-4" class="nav-link"
-                ><i class="fa-solid fa-user"></i>Staff list</a
+                ><i class="fa-solid fa-clipboard"></i>Statistics</a
               >
             </li>
           </ul>
         </div>
       </nav>
 
-      <!-- HOME SECTION -->
       <div class="all-sections">
-        <div id="tab-1" class="section">
+        <!-- HOME SECTION -->
+        <div id="tab-1" class="section" hidden>
           <div class="home-center">
             <h1 class="home-title">This is the home section</h1>
           </div>
         </div>
 
-        <!-- CLOCK IN -->
-        <div id="tab-2" class="section">
+        <!-- CLOCK IN SECTION-->
+        <div id="tab-2" class="section" hidden>
           <div class="clock-in-section">
             <h1 class="clock-in-heading">Clock in</h1>
             <!-- time -->
@@ -120,6 +120,29 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- STAFF LIST SECTION -->
+
+        <div id="tab-3" class="section">
+          <div class="staff-list-center">
+            <h1 class="staff-list-title">Staff members currently logged in:</h1>
+            <div class="staff-member-card-list">
+              <article class="staff-member-card">
+                <div class="staff-member-status">Status</div>
+                <div class="staff-member-name">Staff Member</div>
+                <div class="staff-member-class">Register Class</div>
+                <div class="time-stamp-clock-in">Clock-in time</div>
+              </article>
+            </div>
+          </div>
+        </div>
+
+        <!-- STATISTICS SECTION -->
+        <div id="tab-4" class="section" hidden>
+          <div class="statistics-center">
+            <h1 class="statistics-title">This is the statistics section</h1>
           </div>
         </div>
       </div>

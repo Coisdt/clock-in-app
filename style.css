@@ -90,11 +90,7 @@ body {
   color: white;
 }
 
-/* =============================================== ALL SECTIONS */
-
-
-
-/* =============================================== CLOCK IN SECTION*/
+/* =============================================== HOME SECTION*/
 
 .home-center {
   display: grid;
@@ -113,12 +109,10 @@ body {
 
 /* =============================================== CLOCK IN SECTION*/
 
-
-
 .clock-in-section {
   display: grid;
   height: 700px;
-  grid-template-rows: 3fr 7fr;
+  grid-template-rows: 2fr 7fr 1fr;
   background-color: rgb(255, 250, 229);
   justify-content: center;
   align-items: center;
@@ -132,10 +126,9 @@ body {
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   align-items: start;
-  /* gap: 4rem; */
-  width: 1100px;
-  /* height: 100%; */
   padding: 5px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .clock-in-heading {
@@ -273,15 +266,14 @@ body {
 @media screen and (max-width: 1140px) {
   .clock-in-section {
     display: grid;
-    grid-template-rows: 1fr 20fr;
+    /* grid-template-rows: 1fr 10fr; */
   }
 
   .clock-in-center {
     display: flex;
-    /* flex-direction: column; */
-    /* height: 150px; */
     gap: 50px;
-    width: 100%;
+    width: 800px;
+    margin: 0 auto;
     justify-items: center;
   }
 
@@ -314,4 +306,67 @@ body {
   .input-bar {
     font-size: 18px;
   }
+}
+
+/* ===============================================
+
+STATISTICS SECTION
+
+==================================================*/
+.statistics-center {
+  display: grid;
+  height: 700px;
+  background-color: rgb(255, 250, 229);
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid black;
+}
+
+/* ===============================================
+
+CLOCK OUT SECTION
+
+==================================================*/
+.staff-list-center {
+  display: flex;
+  flex-direction: column;
+  height: 700px;
+  background-color: rgb(255, 250, 229);
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 2px solid black;
+  border: 2px solid;
+  gap: 35px;
+  padding: 25px;
+}
+
+.staff-list-title {
+  display: grid;
+  justify-content: center;
+}
+
+.staff-member-card {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 0.5fr 0.5fr;
+  border: 2px solid;
+  height: 30px;
+  width: 900px;
+  border-bottom: 0.1px solid;
+  justify-content: center;
+}
+
+.staff-member-name,
+.staff-member-class,
+.staff-member-status,
+.time-stamp-clock-in {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  border-right: 0.2px solid;
+  padding: 0 5px;
+}
+
+.staff-member-name {
+  justify-content: start;
+  padding-left: 20px;
 }
