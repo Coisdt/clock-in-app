@@ -159,22 +159,44 @@ function checkForStaff() {
     const { firstName, lastName, registerClassNumber } = matchedTeacher;
     notificationElement.innerHTML = `Welcome <strong class='highlight-name'>${firstName} ${lastName}</strong>, you've signed in at ${clockTime()}.`;
 
-    // only allow login once
-    console.log(loggedInStaff);
-    if(loggedInStaff.includes(matchedTeacher) === true){
-      console.log('staff member already logged in');
-      loggedInStaff.push(matchedTeacher);
+    // // add to clock out section to logout
+    function addToClockOut() {
+      // only allow login once
+      const { firstName, lastName, registerClassNumber } = matchedTeacher;
+
+      if (loggedInStaff.includes(matchedTeacher)) {
+        console.log(
+          `${matchedTeacher.firstName}${matchedTeacher.lastName} has already clocked in.`
+        );
+        notificationElement.innerHTML = `${matchedTeacher.firstName} ${matchedTeacher.lastName} has already clocked in.`;
+
+        return;
+      }
+      addToUniqueArray(loggedInStaff, matchedTeacher);
+      // add to clock out
+      const staffCard = document.createElement("article");
+      staffCard.setAttribute("class", "staff-member-card");
+      staffCard.innerHTML = `
+      <div class="staff-member-status">Clocked in</div>
+      <div class="staff-member-name">${firstName} ${lastName}</div>
+      <div class="staff-member-class">${registerClassNumber}</div>
+      <div class="time-stamp-clock-in">${clockTime()}</div>
+      <div class="time-stamp-clock-out"><button class="log-out-time">log out</button></div>`;
+      staffCardList.appendChild(staffCard);
+      clockOut();
+    }
+    addToClockOut();
+    
+    // create an new array for logged in staff members
+    function addToUniqueArray(arr, value) {
+      if (!arr.includes(value)) {
+        arr.push(value);
+        inputElement.value = "";
+        persalNumber.length = 0;
+      }
     }
 
-    // // add to clock out section to logout
-    const staffCard = document.createElement("article");
-    staffCard.setAttribute("class", "staff-member-card");
-    staffCard.innerHTML = `
-    <div class="staff-member-status"></div>
-    <div class="staff-member-name">${firstName} ${lastName}</div>
-    <div class="staff-member-class">${registerClassNumber}</div>
-    <div class="time-stamp-clock-in">${clockTime()}</div>`;
-    staffCardList.appendChild(staffCard);
+    console.log(loggedInStaff);
 
     // remove numbers after clock in
     inputElement.value = "";
@@ -233,3 +255,14 @@ window.addEventListener("keydown", (e) => {
 // }
 
 // displayTeachers(teachers);
+
+function clockOut() {
+  const logOutBtn = document.querySelector('.log-out-btn')
+  console.log(logOutBtn);
+  const staffList = document.querySelector(".staff-member-card-list");
+  logOutBtn.addEventListener("click", (e) => {
+    console.log('hi');
+  });
+}
+
+// clockOut()

@@ -335,7 +335,7 @@ CLOCK OUT SECTION
   justify-content: flex-start;
   align-items: center;
   border-bottom: 2px solid black;
-  border: 2px solid;
+  /* border: 2px solid; */
   gap: 35px;
   padding: 25px;
 }
@@ -347,7 +347,7 @@ CLOCK OUT SECTION
 
 .staff-member-card {
   display: grid;
-  grid-template-columns: 0.5fr 1fr 0.5fr 0.5fr;
+  grid-template-columns: 0.5fr 1fr 0.5fr 0.5fr 0.5fr;
   border: 2px solid;
   height: 30px;
   width: 900px;
@@ -358,12 +358,23 @@ CLOCK OUT SECTION
 .staff-member-name,
 .staff-member-class,
 .staff-member-status,
-.time-stamp-clock-in {
+.time-stamp-clock-in, .time-stamp-clock-out {
   display: grid;
   justify-content: center;
   align-items: center;
   border-right: 0.2px solid;
   padding: 0 5px;
+}
+.staff-member-name-1,
+.staff-member-class-1,
+.staff-member-status-1,
+.time-stamp-clock-in-1, .time-stamp-clock-out-1 {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  border-right: 0.2px solid;
+  padding: 0 5px;
+  background-color: lightgrey;
 }
 
 .staff-member-name {
