@@ -58,9 +58,13 @@
 
       <div class="all-sections">
         <!-- HOME SECTION -->
-        <div id="tab-1" class="section" hidden>
+        <div id="tab-1" class="section">
           <div class="home-center">
             <h1 class="home-title">This is the home section</h1>
+            <div class="features-banner">
+              <h2>We are proud to present...</h2>
+              <h1>The Clock-in system</h1>
+            </div>
           </div>
         </div>
 
@@ -125,17 +129,39 @@
 
         <!-- STAFF LIST SECTION -->
 
-        <div id="tab-3" class="section">
+        <div id="tab-3" class="section" hidden>
           <div class="staff-list-center">
-            <h1 class="staff-list-title">Clocked in staff members:</h1>
-            <div class="staff-member-card-list">
-              <article class="staff-member-card">
+            <!-- clockin -->
+            <div class="clock-in">
+              <h1 class="staff-list-title">Clocked in staff members:</h1>
+              <article class="staff-member-card-1">
                 <div class="staff-member-status-1">Status</div>
                 <div class="staff-member-name-1">Staff Member</div>
                 <div class="staff-member-class-1">Register Class</div>
                 <div class="time-stamp-clock-in-1">Clock-in time</div>
-                <div class="time-stamp-clock-out-1"></div>
+                <div class="time-stamp-clock-out-1">Clock-out time</div>
               </article>
+              <div class="staff-member-card-list"></div>
+            </div>
+            <!-- clockout -->
+            <div class="clock-out">
+              <h1 class="logged-out-staff-list-title">
+                Clocked out staff members:
+              </h1>
+              <article class="logged-out-staff-member-card-1">
+                <div class="logged-out-staff-member-status-1">Status</div>
+                <div class="logged-out-staff-member-name-1">Staff Member</div>
+                <div class="logged-out-staff-member-class-1">
+                  Register Class
+                </div>
+                <div class="logged-out-time-stamp-clock-in-1">
+                  Clock-in time
+                </div>
+                <div class="logged-out-time-stamp-clock-out-1">
+                  Clock-out time
+                </div>
+              </article>
+              <div class="logged-out-staff-member-card-list"></div>
             </div>
           </div>
         </div>

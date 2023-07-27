@@ -9,10 +9,6 @@ const notificationElement = document.querySelector(".notification-message");
 // TAB SWITCH
 
 // ==============================================
-// const homeTab = document.getElementById("tab-1");
-// const clockInTab = document.getElementById("tab-2");
-// const homeSection = document.querySelector(".section-1");
-// const clockInSection = document.querySelector(".section-2");
 const tabLinks = document.querySelectorAll(".nav-link");
 const tabContainer = document.querySelector(".tab-container");
 const allSections = document.querySelector(".all-sections");
@@ -143,11 +139,9 @@ currentDate.textContent = `${day} ${currentMonth} ${year}`;
 // CLOCK IN SECTION - SUBMITION OF PERSAL NUMBER
 
 // ==============================================
-// const staffListCenter = document.querySelector(".staff-list-center");
-const staffCardList = document.querySelector(".staff-member-card-list");
-let loggedInStaff = [];
+let clockedInStaff = [];
 
-function checkForStaff() {
+function clockIn() {
   let inputValue = inputElement.value;
   const timeStamp = document.querySelector(".notification-message-time");
 
@@ -159,48 +153,8 @@ function checkForStaff() {
     const { firstName, lastName, registerClassNumber } = matchedTeacher;
     notificationElement.innerHTML = `Welcome <strong class='highlight-name'>${firstName} ${lastName}</strong>, you've signed in at ${clockTime()}.`;
 
-    // // add to clock out section to logout
-    function addToClockOut() {
-      // only allow login once
-      const { firstName, lastName, registerClassNumber } = matchedTeacher;
-
-      if (loggedInStaff.includes(matchedTeacher)) {
-        console.log(
-          `${matchedTeacher.firstName}${matchedTeacher.lastName} has already clocked in.`
-        );
-        notificationElement.innerHTML = `${matchedTeacher.firstName} ${matchedTeacher.lastName} has already clocked in.`;
-
-        return;
-      }
-      addToUniqueArray(loggedInStaff, matchedTeacher);
-      // add to clock out
-      const staffCard = document.createElement("article");
-      staffCard.setAttribute("class", "staff-member-card");
-      staffCard.innerHTML = `
-      <div class="staff-member-status">Clocked in</div>
-      <div class="staff-member-name">${firstName} ${lastName}</div>
-      <div class="staff-member-class">${registerClassNumber}</div>
-      <div class="time-stamp-clock-in">${clockTime()}</div>
-      <div class="time-stamp-clock-out"><button class="log-out-time">log out</button></div>`;
-      staffCardList.appendChild(staffCard);
-      clockOut();
-    }
-    addToClockOut();
-    
-    // create an new array for logged in staff members
-    function addToUniqueArray(arr, value) {
-      if (!arr.includes(value)) {
-        arr.push(value);
-        inputElement.value = "";
-        persalNumber.length = 0;
-      }
-    }
-
-    console.log(loggedInStaff);
-
-    // remove numbers after clock in
-    inputElement.value = "";
-    persalNumber.length = 0;
+    // add to clock out list
+    addToClockOut(matchedTeacher);
   } else if (inputElement.value === "") {
     notificationElement.textContent = "Please enter a valid persal number";
 
@@ -222,14 +176,19 @@ function checkForStaff() {
   }
 }
 
-submitBtn.addEventListener("click", checkForStaff);
+submitBtn.addEventListener("click", clockIn);
 
-// enter submits persal
+// ==============================================
+
+// PRESS ENTER KEY
+
+// ==============================================
+
 window.addEventListener("keydown", (e) => {
   const key = e.key;
   if (key === "Enter") {
     // console.log("enter works");
-    checkForStaff();
+    clockIn();
   }
 });
 
@@ -256,13 +215,86 @@ window.addEventListener("keydown", (e) => {
 
 // displayTeachers(teachers);
 
-function clockOut() {
-  const logOutBtn = document.querySelector('.log-out-btn')
-  console.log(logOutBtn);
-  const staffList = document.querySelector(".staff-member-card-list");
-  logOutBtn.addEventListener("click", (e) => {
-    console.log('hi');
+// ======================================================================
+//
+// CLOCK OUT SECTION - ADD TO CLOCK OUT SECTION
+//
+// ======================================================================
+const staffCardList = document.querySelector(".staff-member-card-list");
+
+function addToClockOut(matchedTeacher) {
+  const { firstName, lastName, registerClassNumber, persalNumber } =
+    matchedTeacher;
+
+  if (!clockedInStaff.includes(matchedTeacher)) {
+    // add to array of staff that's logged in
+    clockedInStaff.push(matchedTeacher);
+    inputElement.value = "";
+
+    // Display staff cards
+    displayStaffCards(matchedTeacher);
+  } else if (clockedInStaff.includes(matchedTeacher)) {
+    clockedInStaff = clockedInStaff.filter(
+      (teacher) => teacher.persalNumber !== matchedTeacher.persalNumber
+    );
+    notificationElement.innerHTML = `${matchedTeacher.firstName} ${matchedTeacher.lastName} has already clocked in.`;
+    inputElement.value = "";
+  }
+}
+
+function displayStaffCards(matchedTeacher) {
+  // Clear existing staff cards
+  staffCardList.innerHTML = "";
+
+  // Create staff cards for each logged-in teacher
+  clockedInStaff.forEach((matchedTeacher) => {
+    const { persalNumber, firstName, lastName, registerClassNumber } =
+      matchedTeacher;
+    const staffCard = document.createElement("article");
+    staffCard.setAttribute("class", "staff-member-card");
+    staffCard.setAttribute("id", persalNumber);
+    staffCard.innerHTML = `
+      <div class="staff-member-status">Clocked in</div>
+      <div class="staff-member-name">${firstName} ${lastName}</div>
+      <div class="staff-member-class">${registerClassNumber}</div>
+      <div class="time-stamp-clock-in">${clockTime()}</div>
+      <div class="time-stamp-clock-out"><button class="log-out-time">Clock out</button></div>`;
+    staffCardList.appendChild(staffCard);
+    // console.log(staffCard);
+    clockOut(staffCard);
   });
 }
 
-// clockOut()
+function clockOut() {
+  // adds to clocked out staff list
+  const loggedOutStaffList = document.querySelector(
+    ".logged-out-staff-member-card-list"
+  );
+
+  // Remove the staff card from the DOM
+  // const clockOutButton = document.querySelector(".log-out-time");
+  staffCardList.addEventListener("click", (event) => {
+    const clockoutButton = event.target;
+    if (event.target.classList.contains("log-out-time")) {
+      const staffCard = clockoutButton.closest(".staff-member-card");
+      staffCard.remove();
+
+      // Remove the teacher from the clockedInStaff array
+      const persalNumber = staffCard.getAttribute("id");
+      clockedInStaff = clockedInStaff.filter(
+        (teacher) => teacher.persalNumber !== persalNumber
+      );
+
+      loggedOutStaffList.appendChild(staffCard);
+      
+      // time
+      const clockedOutTimeElement = staffCard.querySelector(
+        ".time-stamp-clock-out"
+      );
+      clockedOutTimeElement.innerHTML = clockTime();
+      // status
+      const staffStatus = document.querySelector(".staff-member-status");
+      staffStatus.textContent = "clocked out";
+    }
+  });
+}

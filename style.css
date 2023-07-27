@@ -263,6 +263,10 @@ body {
   color: var(--highlight-clr);
 }
 
+.notification-message{
+  text-align: center;
+}
+
 @media screen and (max-width: 1140px) {
   .clock-in-section {
     display: grid;
@@ -328,24 +332,26 @@ CLOCK OUT SECTION
 
 ==================================================*/
 .staff-list-center {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   height: 700px;
+  grid-template-rows: 1fr 1fr;
   background-color: rgb(255, 250, 229);
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
+  align-items: start;
   border-bottom: 2px solid black;
   /* border: 2px solid; */
   gap: 35px;
   padding: 25px;
 }
 
-.staff-list-title {
+.staff-list-title,
+.logged-out-staff-list-title {
   display: grid;
   justify-content: center;
 }
 
-.staff-member-card {
+.staff-member-card, .staff-member-card-1,
+.logged-out-staff-member-card, .logged-out-staff-member-card-1 {
   display: grid;
   grid-template-columns: 0.5fr 1fr 0.5fr 0.5fr 0.5fr;
   border: 2px solid;
@@ -358,7 +364,8 @@ CLOCK OUT SECTION
 .staff-member-name,
 .staff-member-class,
 .staff-member-status,
-.time-stamp-clock-in, .time-stamp-clock-out {
+.time-stamp-clock-in,
+.time-stamp-clock-out {
   display: grid;
   justify-content: center;
   align-items: center;
@@ -366,9 +373,15 @@ CLOCK OUT SECTION
   padding: 0 5px;
 }
 .staff-member-name-1,
+.logged-out-staff-member-name-1,
 .staff-member-class-1,
+.logged-out-staff-member-class-1,
 .staff-member-status-1,
-.time-stamp-clock-in-1, .time-stamp-clock-out-1 {
+.logged-out-staff-member-status-1,
+.time-stamp-clock-in-1,
+.logged-out-time-stamp-clock-in-1,
+.time-stamp-clock-out-1,
+.logged-out-time-stamp-clock-out-1 {
   display: grid;
   justify-content: center;
   align-items: center;
@@ -381,3 +394,4 @@ CLOCK OUT SECTION
   justify-content: start;
   padding-left: 20px;
 }
+
